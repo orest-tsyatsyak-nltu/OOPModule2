@@ -20,9 +20,25 @@ namespace Module2OOP
             Product humanFood = new Product("Best tuna", DateTime.Now.AddDays(14), "Human food company");
             products.Add(humanFood, humanFood);
 
+            Console.WriteLine("Created products: ");
+            foreach (var p in products)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("");
+
+            products.Remove(dogsFood);
+            Console.WriteLine("Products after deletion: ");
+            foreach (var p in products)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("");
+
             byte[] serializedProducts = SerializeToBinary(products);
             SortedList<Product, Product> deserializedProducts = DeserializeFromBinary<SortedList<Product, Product>>(serializedProducts);
 
+            Console.WriteLine("Products after serialization and deserialization : ");
             foreach (var p in deserializedProducts)
             {
                 Console.WriteLine(p);
